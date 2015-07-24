@@ -13,5 +13,6 @@ f = ExtractFeatures(P)
 
 
 figure(1);
-plot(scan(:,1), scan(:,2), "xr", "linewidth", 3);
 
+plot(scan(:,1), scan(:,2), "xr", "linewidth", 3);
+axis equal;
