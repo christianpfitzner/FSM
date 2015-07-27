@@ -1,5 +1,7 @@
 clear all; clf; clc;
-
+%% may be that are only octave commands
+source ("ExtractFeatures.m")
+source ("create_scan.m")
 %% extract features test
 
 scan = create_scan()
