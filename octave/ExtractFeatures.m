@@ -3,25 +3,23 @@
 %% output parameter: 
 %          f: output vector containing features
 function [f] = ExtractFeatures(W )
-
+f = [ 0 0 0 0 ];
   % check for dimension
  %if(size(W)(1) != 2)
      %error ("not enough input arguments");
  % endif
 
   % check for size
-   n = 3                                                  % numbers of points
+   n = 3;                                                  % numbers of points
   
    % calculate pca
-   c     = mean(W); 
-   Xm    = bsxfun(@minus, W, c); 
-   C     = cov(Xm);
-   [V,D] = eig(C)
-
+   c = mean(W); 
+   Xm = bsxfun(@minus, W, c); 
+   C = cov(Xm);
+   [V,D] = eig(C);
 
    % calculate features from eigen values
-   eigen = [D(1,1), D(2,2)];
-      
+   eigen = [D(1,1), D(2,2)];    
          
    % linearity
    f(1) = eigen(1) / (eigen(1) + eigen(2));
@@ -32,16 +30,16 @@ function [f] = ExtractFeatures(W )
    % standard deviation from centroid 
    sumUp = 0; 
    for(i=1:n)
-      sumUp =  sumUp + sum((W(i)-c)).^2
+%      sumUp =  sumUp + sum((W(i)-c)).^2;
+      sumUp = sumUp + dot((W(i) - c), (W(i) - c));
    end
    
    f(3) = sqrt((1/(n-1)) * sumUp); 
    
+   % mean deviation
    sumUp = 0; 
    for(i=1:n)
-      sumUp =  sumUp + abs((W(i)-c))
+      sumUp =  sumUp + norm((W(i)-c));
    end
-   % mean deviation
-   f(4) = 1/n * sumUp
-
-%endfunction
+   f(4) = 1/n * sumUp;
+endfunction

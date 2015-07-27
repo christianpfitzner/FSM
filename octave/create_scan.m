@@ -9,8 +9,8 @@ function scan = create_scan()
 	%%Kreis
 	center = [7.5, 7.5];
 	radius = 2.5;
-	phi = linspace(pi * 1.25, -pi * 0.25, 20)
-	kreis_x = center(1) + cos(phi) .* radius
+	phi = linspace(pi * 1.25, -pi * 0.25, 20);
+	kreis_x = center(1) + cos(phi) .* radius;
 	kreis_y = center(2) + sin(phi) .* radius;
 	
 	%%Noch eine Linie 
@@ -22,8 +22,8 @@ function scan = create_scan()
 	
 	
 	%Vertikale Vektoren für X und Y
-	x = [ vert_x'; horz_x'; kreis_x'; horz2_x'; horz3_x']
-	y = [ vert_y'; horz_y'; kreis_y'; horz2_y'; horz3_y']
+	x = [ vert_x'; horz_x'; kreis_x'; horz2_x'; horz3_x'];
+	y = [ vert_y'; horz_y'; kreis_y'; horz2_y'; horz3_y'];
 
 	% Scan nachricht
 	% x1 y1
@@ -35,5 +35,5 @@ end
 %Linienerzeugung, Punkte als [x,y]
 function [line_x, line_y] = linie(start, ende, anzahl)
 	line_x = linspace(start(1), ende(1), anzahl);
-	line_y = linspace(start(2), ende(2), anzahl)
+	line_y = linspace(start(2), ende(2), anzahl);
 end
