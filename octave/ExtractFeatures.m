@@ -31,8 +31,8 @@ f = zeros(1, 5);
    % standard deviation from centroid 
    sumUp = 0; 
    for(i=1:n)
-      sumUp =  sumUp + sum((W(i)-c)).^2;
-%      sumUp = sumUp + dot((W(i) - c), (W(i) - c));
+%      sumUp =  sumUp + sum((W(i)-c)).^2;
+      sumUp = sumUp + dot((W(i) - c), (W(i) - c));
    end
    
    f(3) = sqrt((1/(n-1)) * sumUp); 
@@ -45,7 +45,7 @@ f = zeros(1, 5);
    f(4) = 1/n * sumUp;
    
    % linearity with a line equation.
-   [ m, t ] = LineLeastSquare(W)
+   [ m, t ] = LineLeastSquare(W);
    for i = 1 : n
       f(5) = f(5) + (m * W(i, 1) + t - W(i, 2)) .^2;
    endfor
